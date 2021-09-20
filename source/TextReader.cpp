@@ -76,7 +76,8 @@ TextReader::~TextReader() {
 }
 
 tsl::elm::Element* TextReader::createUI() {
-    return new tsl::elm::CustomDrawer([this](tsl::gfx::Renderer *renderer, u16 x, u16 y, u16 w, u16 h) {
+    auto frame = new tsl::elm::OverlayFrame("", "");
+    auto reader = new tsl::elm::CustomDrawer([this](tsl::gfx::Renderer *renderer, u16 x, u16 y, u16 w, u16 h) {
         renderer->fillScreen(a({ 0x0, 0x0, 0x0, 0xD }));
         if (!m_loading) {
             renderer->drawString("Loading... May take a few seconds", false, 20, 50, 16, a(0xFFFF));
@@ -134,6 +135,9 @@ tsl::elm::Element* TextReader::createUI() {
         if (m_debug)
             renderer->drawString(std::to_string(m_fps).c_str(), false, tsl::cfg::FramebufferWidth - 20, 10, 10, a(0xFFFF));
     });
+
+    frame->setContent(reader);
+    return frame;
 }
 
 void TextReader::printLn(std::string const &text, s32 x, s32 y, u32 fontSize, tsl::gfx::Renderer *renderer) const {
