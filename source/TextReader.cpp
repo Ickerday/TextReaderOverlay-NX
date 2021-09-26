@@ -137,6 +137,7 @@ tsl::elm::Element* TextReader::createUI() {
     });
 
     frame->setContent(reader);
+    reader->setBoundaries(0, 0, tsl::cfg::FramebufferWidth, tsl::cfg::FramebufferHeight);
     return frame;
 }
 
