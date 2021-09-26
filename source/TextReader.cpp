@@ -53,8 +53,7 @@ TextReader::TextReader(std::string const &path)
       m_chunkMid(0),
       m_loading(false),
       m_loaded(false),
-      m_font("sdmc:/switch/.overlays/TextReaderOverlay/fonts/UbuntuMono/UbuntuMono-Regular.ttf"),
-      m_size(10),
+      m_font("sdmc:/switch/.overlays/TextReaderOverlay/fonts/font.ttf"),
       m_panx(0),
       m_debug(true)
 {
